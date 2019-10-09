@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import COLORS from '../style/index';
 
 const BottomButtonsComponent = () => {
@@ -21,7 +21,6 @@ const BottomButtonsComponent = () => {
 
 export default BottomButtonsComponent
 
-
 const styles = StyleSheet.create({
     btnArray: {
         backgroundColor: COLORS.primary,
@@ -34,6 +33,6 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary,
         padding: 16,
         textAlign: "center",
-        alignItems: "center"
+        alignItems: "center",
     }
 })

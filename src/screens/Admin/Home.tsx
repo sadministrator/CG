@@ -3,9 +3,8 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import { createAppContainer } from 'react-navigation'
 import BottomButtonsComponent from '../../components/BottomButtonsComponent'
 import SafeAreaView from 'react-native-safe-area-view'
-
 import Teachers from '../Teachers'
-import Students from '../Students'
+import Students from '../Sponsees'
 import Sponsors from '../Sponsors'
 
 import Admins from '../Admins'
@@ -40,10 +39,6 @@ const AppTabNavigator = createMaterialTopTabNavigator(
 const Router = createAppContainer(AppTabNavigator)
 
 export default class Home extends Component<{}, {}> {
-
-    
-    
-
     render() {
         return (
             <SafeAreaView style={{flex: 1, flexDirection: "column"}}>

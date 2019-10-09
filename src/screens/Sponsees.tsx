@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import {  Text, SafeAreaView, ScrollView  } from 'react-native'
 
-export default class Students extends Component {
+export default class Sponsees extends Component {
   static navigationOptions = {
-    title: "Students",
+    title: "Sponsees",
   }
-
   render() {
-    
     return (
       <SafeAreaView >
-      <ScrollView style={{paddingBottom: 20}} >
-        <Text>HELLO FROM Students</Text>
-        
-      </ScrollView>
+        <ScrollView style={{paddingBottom: 20}} >
+          <Text>Hello from Sponsee's view</Text>
+        </ScrollView>
       </SafeAreaView>
     )
   }

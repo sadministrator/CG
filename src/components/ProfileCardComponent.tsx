@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Entypo'
 import { Card, CardItem, Text, Thumbnail, View } from 'native-base'
 import ActionSheet from 'react-native-action-sheet'
 import COLORS from '../style/index'
+import menuOption from '../constants/actionSheet-constants'
 
 interface ProfileCardProps {
   id: string,
@@ -22,66 +23,43 @@ export default class ProfileCardComponent extends Component<ProfileCardProps, Pr
   CANCEL_INDEX = 0
   profile_ID = 'ef488930-eae7-11e9-81b4-2a2ae2dbcce4' // this var is my profile_id (by localStorage) for delete option validation
 
+  componentDidMount () {
+    this.changeOptions()
+  }
+
   changeOptions = () => {
     switch (this.props.role) {
       case 'Admin':
         if (this.props.id == this.profile_ID) {
-          this.BUTTONS = [
-            'Edit',
-            'Cancel'
-          ]
+          this.BUTTONS = menuOption.admin_validation
           this.DESTRUCTIVE_INDEX = 2
           this.CANCEL_INDEX = 1
         }
         else {
-          this.BUTTONS = [
-            'Delete',
-            'Edit',
-            'Cancel'
-          ]
+          this.BUTTONS = menuOption.admin
           this.DESTRUCTIVE_INDEX = 0
           this.CANCEL_INDEX = 2
         }
         return
       case 'Teacher':
-        this.BUTTONS = [
-          'Delete',
-          'Assing Students',
-          'Edit',
-          'Share Photo / Video',
-          'Cancel'
-        ]
+        this.BUTTONS = menuOption.teacher
         this.DESTRUCTIVE_INDEX = 0
         this.CANCEL_INDEX = 4
         return
       case 'Sponsor':
-        this.BUTTONS = [
-          'Delete',
-          'Resend Invitation',
-          'Match Student',
-          'Edit',
-          'Cancel'
-        ]
+        this.BUTTONS = menuOption.sponsor
         this.DESTRUCTIVE_INDEX = 0
         this.CANCEL_INDEX = 3
         return
       case 'Sponsee':
-        this.BUTTONS = [
-          'Delete',
-          'Match Sponsor',
-          'Assign Teacher',
-          'Edit',
-          'Share Photo / Video',
-          'Cancel'
-        ]
+        this.BUTTONS = menuOption.sponsee
         this.DESTRUCTIVE_INDEX = 0
         this.CANCEL_INDEX = 5
         return
     }
-
   }
+
   render() {
-    this.changeOptions()
     const profile = this.props
     return (
       <Card>

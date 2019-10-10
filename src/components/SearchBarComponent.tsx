@@ -12,20 +12,23 @@ interface SearchBarState {
 
 export default class SearchBarComponent extends Component<SearchBarProps, SearchBarState> {
   state = { borderColor: COLORS.blurBorder }
-  onFocus() {
+  
+  onFocus = () => { 
     this.setState({ borderColor: COLORS.focusBorder })
   }
-  onBlur() {
+
+  onBlur = () => { 
     this.setState({ borderColor: COLORS.blurBorder })
   }
+  
   render() {
     return (
       <View style={[styles.container, { borderColor: this.state.borderColor }]}>
         <Item>
           <Input
             onChangeText={(text) => this.props.callback(text)}
-            onBlur={() => this.onBlur()}
-            onFocus={() => this.onFocus()}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
             placeholder='Search...'
             placeholderTextColor={COLORS.placeholder}
             style={styles.inputColorText} />

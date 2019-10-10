@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { FlatList } from 'react-native'
 import ProfileCardComponent from '../components/ProfileCardComponent';
 import SearchBarComponents from '../components/SearchBarComponent';
-import { Container, Content, Root, Button, Text,  ActionSheet } from 'native-base';
+import { Container, Content, Root,  Button, Text,  ActionSheet } from 'native-base';
+import { STYLES } from '../style';
 
 export default class Admins extends Component {
   static navigationOptions = {
@@ -44,6 +45,10 @@ export default class Admins extends Component {
     ]
   }
 
+  mono = (text : string) => {
+    console.log(text)
+  }
+
   renderList = () => {
     const list = this.state.adminsList.map( p => {
       return (
@@ -67,9 +72,13 @@ export default class Admins extends Component {
       <Root>
         <Container>
           <Content padder>
-            <SearchBarComponents />
-            <View style={{ paddingBottom: 20 }}></View>
-            {this.renderList()}
+          <SearchBarComponents 
+            callback={this.mono}
+          />
+          <Button style={STYLES.button}>
+            <Text style={STYLES.textButton}>Create New</Text>
+          </Button>
+          {this.renderList()}
           </Content>
         </Container>
       </Root>

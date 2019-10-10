@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { Item, Input, Icon, View } from 'native-base'
-import COLORS from '../style/index'
+import { COLORS } from '../style/index'
 
 interface SearchBarProps {
   callback: any
@@ -11,14 +11,14 @@ interface SearchBarState {
 }
 
 export default class SearchBarComponent extends Component<SearchBarProps, SearchBarState> {
-  state = { borderColor: COLORS.blurBorder }
+  state = { borderColor: COLORS.lightGray }
   
   onFocus = () => { 
-    this.setState({ borderColor: COLORS.focusBorder })
+    this.setState({ borderColor: COLORS.primary })
   }
 
   onBlur = () => { 
-    this.setState({ borderColor: COLORS.blurBorder })
+    this.setState({ borderColor: COLORS.lightGray })
   }
   
   render() {
@@ -30,7 +30,7 @@ export default class SearchBarComponent extends Component<SearchBarProps, Search
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             placeholder='Search...'
-            placeholderTextColor={COLORS.placeholder}
+            placeholderTextColor={COLORS.gray}
             style={styles.inputColorText} />
           <Icon name='ios-search' style={styles.iconColor} />
         </Item>
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   inputColorText: {
-    color: COLORS.fontColor
+    color: COLORS.darkGray
   },
   iconColor: {
-    color: COLORS.placeholder
+    color: COLORS.gray  
   }
 })

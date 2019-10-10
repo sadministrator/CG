@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import { Card, CardItem, Text, Thumbnail, View } from 'native-base'
 import ActionSheet from 'react-native-action-sheet'
-import COLORS from '../style/index'
+import { COLORS } from '../style/index'
 import menuOption from '../constants/actionSheet-constants'
 
 interface ProfileCardProps {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   name: {
     paddingTop: 5,
     fontWeight: 'bold',
-    color: COLORS.fontColor,
+    color: COLORS.darkGray,
   },
   typeContainer: {
     flex: 1,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   countNumber: {
     marginRight: 5,
     fontWeight: 'bold',
-    color: COLORS.countNumber,
+    color: COLORS.blue,
   },
   dotsContainer: {
     flex: 1,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import COLORS from '../style/index';
+import { COLORS } from '../style/index';
 
 const BottomButtonsComponent = () => {
     return (

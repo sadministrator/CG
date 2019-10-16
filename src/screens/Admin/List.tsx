@@ -5,7 +5,7 @@ import PTRView from 'react-native-pull-to-refresh'
 import EmptyListMessage from '../../components/EmptyListMessageComponent'
 import { Button, Text } from 'native-base'
 import { connect } from 'react-redux'
-import { staff } from '../../actions/staff-list-actions'
+import { getStaffAction } from '../../actions/staff-list-actions'
 import { STYLES } from '../../style';
 import { NavigationEvents } from 'react-navigation';
 import { View, StyleSheet, ActivityIndicator } from 'react-native'
@@ -13,7 +13,7 @@ import { timeAgo } from '../../helpers'
 
 interface ListProps {
   navigation: any
-  staff: (arg0?: string) => void
+  getStaffAction: (arg0?: string) => void
   loading: boolean
   error: any
   list: Array<any>
@@ -35,7 +35,7 @@ export class List extends Component<ListProps, ListState> {
       message: Component,
       search: '',
     }
-    this.props.staff()
+    this.props.getStaffAction()
   }
 
   goToOthersProfile = (name: string) => {
@@ -44,7 +44,7 @@ export class List extends Component<ListProps, ListState> {
   }
 
   componentWillMount = () => {
-    this.props.staff()
+    this.props.getStaffAction()
   }
 
   componentWillReceiveProps = () => {
@@ -61,7 +61,7 @@ export class List extends Component<ListProps, ListState> {
     text = text.replace(/ /g, '')
     if (text.length > 0)
       filter = true
-    this.props.staff(escape(text))
+    this.props.getStaffAction(escape(text))
     this.setState({ filterActive: filter });
   }
 
@@ -70,7 +70,7 @@ export class List extends Component<ListProps, ListState> {
       filterActive: false,
       search: ''
     })
-    this.props.staff();
+    this.props.getStaffAction();
   }
 
   getSnapshotBeforeUpdate = (prevp: ListProps) => {
@@ -88,7 +88,7 @@ export class List extends Component<ListProps, ListState> {
         var arrayRoles = p.roles.split(',')
         return (
           <ProfileCardComponent
-            listName='Staff'
+            list_name='Staff'
             id={p.id}
             first_name={p.first_name}
             last_name={p.last_name}
@@ -97,7 +97,7 @@ export class List extends Component<ListProps, ListState> {
             role={arrayRoles}
             profile_picture={p.profile_picture}
             last_signed={date}
-            onClick={() => this.goToOthersProfile(p.first_name)}
+            on_click={() => this.goToOthersProfile(p.first_name)}
           />
         );
       });
@@ -113,7 +113,7 @@ export class List extends Component<ListProps, ListState> {
       <PTRView onRefresh={this.refreshList}>
         <NavigationEvents
           onWillFocus={() => {
-            this.props.staff()
+            this.props.getStaffAction()
             this.setState({
               filterActive: false,
               message: <></>,
@@ -154,7 +154,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    staff: (search?: string) => dispatch(staff(search))
+    getStaffAction: (search?: string) => dispatch(getStaffAction(search))
   }
 }
 

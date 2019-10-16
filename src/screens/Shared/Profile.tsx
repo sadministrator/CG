@@ -6,24 +6,29 @@ import { STYLES } from '../../style'
 interface ProfileProps{
     navigation : any
 }
+
 interface ProfileState{
     name : string
 }
+
 export default class Profile extends Component<ProfileProps, ProfileState> {
     static navigationOptions = {
         title: 'Admins',
         header: null,
     }
-    UNSAFE_componentWillMount () {
+
+    componentWillMount () {
         const { navigation } = this.props;
         this.setState({
             name : navigation.getParam('name')
         })
     }
+
     goBack = () => {
         const { goBack } = this.props.navigation
         goBack()
     }
+
     render() {
         return (
             <View style={{padding: 20}}>

@@ -7,7 +7,7 @@ import { COLORS } from '../style/index'
 import menuOption from '../constants/actionSheet-constants'
 
 interface ProfileCardProps {
-  listName: string
+  list_name: string
   id: string
   first_name: string
   last_name: string
@@ -16,10 +16,10 @@ interface ProfileCardProps {
   type: string
   role: Array<string> 
   last_signed: string
-  onClick : any
+  on_click : any
 }
 
-export default class ProfileCardComponent extends Component<ProfileCardProps, ProfileCardProps> {
+export default class ProfileCardComponent extends Component<ProfileCardProps> {
   rolesTxt : string = ''
   role: string = ''
   BUTTONS = ['']
@@ -74,7 +74,7 @@ export default class ProfileCardComponent extends Component<ProfileCardProps, Pr
   render() {
     const profile = this.props
     return (
-      <TouchableOpacity onPress={this.props.onClick}>
+      <TouchableOpacity onPress={this.props.on_click}>
       <Card >
         <CardItem style={{overflow: 'hidden'}}>
           <View style={styles.container}>
@@ -99,7 +99,7 @@ export default class ProfileCardComponent extends Component<ProfileCardProps, Pr
               {profile.last_signed}
             </Text>
             {
-              profile.listName == 'Staff' && 
+              profile.list_name == 'Staff' && 
               <View style={styles.typeContainer}>
               <Text note>
                 {this.rolesTxt.slice(0, -2)}

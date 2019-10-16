@@ -23,7 +23,7 @@ const getStaffError = (error: any): types.IActionStaffListError => {
     }
 }
 
-export const staff = (search?: string) =>
+export const getStaffAction = (search?: string) =>
     (dispatch: Dispatch) => {
         dispatch(getStaffBegin());
         getStaff.getAllStaff(search)

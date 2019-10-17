@@ -6,7 +6,7 @@ export const timeAgo = (date: Date) => {
     var DBdate = new Date (date)
     var currentDate = new Date()
     var text
-    var diference = currentDate.getTime() - DBdate.setHours( DBdate.getHours() + timeOffset )
+    var diference = currentDate.getTime() - DBdate.setHours( DBdate.getHours()  )
 
     if (diference > dayOnMiliseconds){
         let hour = DBdate.getHours()

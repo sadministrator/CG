@@ -47,12 +47,6 @@ export class List extends Component<ListProps, ListState> {
     this.props.getStaffAction()
   }
 
-  componentWillReceiveProps = () => {
-    if (typeof this.props.list !== 'undefined' && this.props.list.length > 0) {
-      this.renderList()
-    }
-  }
-
   filterList = (text: string) => {
     let filter: boolean = false
     this.setState({

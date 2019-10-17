@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ENV from 'react-native-config';
 
-const getAllSponsor = (search?: string) => {
+const getAllSponsors = (search?: string) => {
     const url = search ? ENV.API_URL+'sponsors/filter/' + search : ENV.API_URL+'sponsors'
     return axios.get(url)
         .then(response => {
@@ -14,6 +14,6 @@ const getAllSponsor = (search?: string) => {
         })
 }
 
-export const getSponsor = {
-    getAllSponsor
+export const getSponsors = {
+    getAllSponsors
 }

@@ -5,7 +5,7 @@ import PTRView from 'react-native-pull-to-refresh'
 import EmptyListMessage from '../../components/EmptyListMessageComponent'
 import { Button, Text } from 'native-base'
 import { connect } from 'react-redux'
-import { getSponsorAction } from '../../actions/sponsor-list-actions'
+import { getSponsorsAction } from '../../actions/sponsors-list-actions'
 import { STYLES } from '../../style';
 import { NavigationEvents } from 'react-navigation';
 import { View, StyleSheet, ActivityIndicator } from 'react-native'
@@ -13,7 +13,7 @@ import { timeAgo } from '../../helpers'
 
 interface ListProps {
   navigation: any
-  getSponsorAction: (arg0?: string) => void
+  getSponsorsAction: (arg0?: string) => void
   loading: boolean
   error: any
   list: Array<any>
@@ -35,7 +35,7 @@ export class List extends Component<ListProps, ListState> {
       message: Component,
       search: '',
     }
-    this.props.getSponsorAction()
+    this.props.getSponsorsAction()
   }
 
   goToOthersProfile = (name: string) => {
@@ -44,13 +44,7 @@ export class List extends Component<ListProps, ListState> {
   }
 
   componentWillMount = () => {
-    this.props.getSponsorAction()
-  }
-
-  componentWillReceiveProps = () => {
-    if (typeof this.props.list !== 'undefined' && this.props.list.length > 0) {
-      this.renderList()
-    }
+    this.props.getSponsorsAction()
   }
 
   filterList = (text: string) => {
@@ -61,7 +55,7 @@ export class List extends Component<ListProps, ListState> {
     text = text.replace(/ /g, '')
     if (text.length > 0)
       filter = true
-    this.props.getSponsorAction(escape(text))
+    this.props.getSponsorsAction(escape(text))
     this.setState({ filterActive: filter });
   }
 
@@ -70,7 +64,7 @@ export class List extends Component<ListProps, ListState> {
       filterActive: false,
       search: ''
     })
-    this.props.getSponsorAction();
+    this.props.getSponsorsAction();
   }
 
   getSnapshotBeforeUpdate = (prevp: ListProps) => {
@@ -113,7 +107,7 @@ export class List extends Component<ListProps, ListState> {
       <PTRView onRefresh={this.refreshList}>
         <NavigationEvents
           onWillFocus={() => {
-            this.props.getSponsorAction()
+            this.props.getSponsorsAction()
             this.setState({
               filterActive: false,
               message: <></>,
@@ -145,15 +139,15 @@ export class List extends Component<ListProps, ListState> {
 
 const mapStateToProps = (state: any) => {
   return {
-    loading: state.sponsorListReducer.aloading,
-    list: state.sponsorListReducer.sponsor,
-    error: state.sponsorListReducer.aerror
+    loading: state.sponsorsListReducer.loading,
+    list: state.sponsorsListReducer.sponsors,
+    error: state.sponsorsListReducer.error
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    getSponsorAction: (search?: string) => dispatch(getSponsorAction(search))
+    getSponsorsAction: (search?: string) => dispatch(getSponsorsAction(search))
   }
 }
 

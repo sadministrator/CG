@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import { staffListReducer } from './staff-list-reducer'
-import { sponsorListReducer } from './sponsor-list-reducer'
+import { sponsorsListReducer } from './sponsors-list-reducer'
 
 
 export const reducers = {
     staffListReducer,
-    sponsorListReducer
+    sponsorsListReducer
 };
 
 export const rootReducer = combineReducers(reducers);

@@ -1,8 +1,8 @@
-import { exampleReducer } from './example-reducer';
+import { staffListReducer } from './staff-list-reducer'
 import { combineReducers } from "redux";
 
 export const reducers = {
-    exampleReducer
+    staffListReducer,
 };
 
 export const rootReducer = combineReducers(reducers);

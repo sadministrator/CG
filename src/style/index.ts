@@ -1,6 +1,7 @@
 const COLORS = {
-    primary: '#6d70e0',
+    primary: 'rgb(148,87,227)',
     secondary: '#6d70e0',
+    third: '#567fde',
     blue: '#0087ff',
     darkGray: '#555',
     gray: '#999',
@@ -19,17 +20,24 @@ const STYLES ={
         borderColor: '#ededed',
         backgroundColor : '#fff',
         borderRadius: 5,
-        elevation: 4,
+        elevation: 2,
         marginBottom: 16
     },
-
+    
     textButton : {
-        textTransform: 'capitalize',
-        color: '#0087ff',
-        fontWeight: 'bold',
-        width: '100%',
         textAlign: 'center',
-        fontSize: 16
+        textTransform: 'capitalize',
+        fontWeight: 'bold',
+        color: '#0087ff',
+        width: '100%',
+        fontSize: 16,
+    },
+
+    emptyListMessage: {
+        textAlign: 'center',
+        color: '#999',
+        fontSize: 16,
+        paddingTop: 40
     }
 }
 export { STYLES, COLORS };
